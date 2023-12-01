@@ -41,7 +41,10 @@
         </div>
         <div>
             <label for="price" th:text="#{label.item.price}">가격</label>
-
+            <!-- 개선된 버전 (th:classappend 사용)-->
+            <input type="text" id="price" th:field="*{price}"
+                   th:classappend="${errors?.containsKey('price')} ? 'field-error' : _"
+                   class="form-control" placeholder="가격을 입력하세요">
             <div class="field-error" th:if="${errors?.containsKey('price')}" th:text="${errors['price']}">
                 가격 오류
             </div>
